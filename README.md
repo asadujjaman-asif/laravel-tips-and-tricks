@@ -4,10 +4,14 @@ A new small improvement in the latest Laravel 10.11.<br>
 You can now call dd() or dump() for Carbon objects, useful at the end of chaining, <br>for example.
 
 - Instead of (previous version):<br>
-`$var= now()->addDays(7);`<br>
-`dd($var);`<br>
+```php
+	$var= now()->addDays(7);
+	dd($var);
+
 - From Laravel 10.11:<br>
-`now()->addDays(7)->dd();`<br>
+	now()->addDays(7)->dd();
+```
+<br>
 
 # before and after validation rules in Laravel.
 
