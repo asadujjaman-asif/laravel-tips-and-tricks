@@ -38,9 +38,9 @@ class ProductRequest extends FromRequest
 	}
 }
 ```
-# Deferent option of if conditons.
+# Different type of 'if condition'.
 
-You can use the best option of if as your like. <br>
+You can choose the best option of 'if condition'. <br>
 <br>for example.
 
 ```php
@@ -66,4 +66,33 @@ public function hasLimitations(Account $account):bool
 
 public function hasLimitations(Account $account):bool
 	return (($account->has_access_to_paid_version_for_sale) && (! config('app.requires_subscription')) && ($account->isSubscribed())));
+```
+# 'iseet' accepts more than one parameter.
+Did you know that isset() accepts more than one parameter?<br>
+<br>for example.
+- Instead of doing this:<br>
+```php
+if(isset($book) && isset($pen)){
+
+}
+```
+- Now you can do this<br>
+```php
+if(isset($book,$pen)){
+
+}
+```
+# Multiple parameter in 'OrWhere'.
+You can pass multiple parameters to "orWhere"<br>
+<br>for example.
+- Normal way:<br>
+```php
+$user->whare('name','asif');
+$user->orWhare('age',28);
+$user->orWhare('city','Rangpur');
+```
+- Smart way<br>
+```php
+$user->whare('name','asif');
+$user->orWhare(['age'=>28,'city'=>'Rangpur']);
 ```
