@@ -18,19 +18,19 @@ It’s very useful if you’re working with dates that depend on each other: <br
 &nbsp;`{`<br>
 &ensp;`public function rules():array`<br>
 &ensp;&nbsp;`return [`<br>
-&emsp;&nbsp`'publishAt' =>[`<br>
-`'required',`<br>
-`'date',`<br>
-`'before:publishAt'`<br>
-`],`<br>
-`'archiveAt'=>[`<br>
-`'required',`<br>
-`'date',`<br>
-`'after:publishAt'`<br>
-`]`<br>
-`];`<br>
-`}`<br>
-`}`<br>
+&emsp;&nbsp;`'publishAt' =>[`<br>
+&emsp;&ensp;`'required',`<br>
+&emsp;&ensp;`'date',`<br>
+&emsp;&ensp;`'before:publishAt'`<br>
+&ensp;&nbsp;`],`<br>
+&emsp;&nbsp;`'archiveAt'=>[`<br>
+&emsp;&ensp;`'required',`<br>
+&emsp;&ensp;`'date',`<br>
+&emsp;&ensp;`'after:publishAt'`<br>
+&ensp;&nbsp;`]`<br>
+&ensp;`];`<br>
+&ensp;`}`<br>
+&nbsp;`}`<br>
 
 # Deferent option of if conditons.
 
