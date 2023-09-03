@@ -15,6 +15,29 @@ You can use the before and after validation rules in Laravel. <br>
 It’s very useful if you’re working with dates that depend on each other: <br>for example.
 
 `class ProductRequest extends FromRequest`<br>
+&nbsp;`{`<br>
+`public function rules():array`<br>
+`return [`<br>
+`'publishAt' =>[`<br>
+`'required',`<br>
+`'date',`<br>
+`'before:publishAt'`<br>
+`],`<br>
+`'archiveAt'=>[`<br>
+`'required',`<br>
+`'date',`<br>
+`'after:publishAt'`<br>
+`]`<br>
+`];`<br>
+`}`<br>
+`}`<br>
+
+# Deferent option of if conditons.
+
+You can use the best option of if as your like. <br>
+<br>for example.
+
+`class ProductRequest extends FromRequest`<br>
 `{`<br>
 `public function rules():array`<br>
 `return [`<br>
