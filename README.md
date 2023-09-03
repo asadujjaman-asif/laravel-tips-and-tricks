@@ -96,3 +96,63 @@ $user->orWhare('city','Rangpur');
 $user->whare('name','asif');
 $user->orWhare(['age'=>28,'city'=>'Rangpur']);
 ```
+# Eloquent Model name differs from the table name?.
+Eloquent Model name differs from the table name?<br> No problem, you can specify the table name in the protected property called "table" of Eloquent Model.<br>
+<br>for example.
+```php
+class UserDetails extends Model
+{
+	protected $table='addresses'
+}
+```
+# Laravel Eloquent.
+Tips of laravel eluquent
+- Eager loading relationships with "with"
+```php
+$user=User::with('posts')->get();
+```
+- Filtering basen on related records existance using "has"
+```php
+$activeUser=User::has("posts")->get();
+```
+- Combining "with" and "whereHas" with "withWhereHas"
+```php
+$userWithActive=User::withWhereHas('posts',function($qs){
+	$qs->where('active',true);
+}
+)->get();
+```
+- Nested relationship contains with "whereRelations"
+```php
+$userWithRelation=User::whereRelation('posts.comments','active',true)->get();
+```
+- Maching any related record using "orWhere"
+```php
+$userMachingRecord=User::whereHas('posts',function($qs){
+	$qs->where('active',true);
+})->orWhereHas('comments',function($qs){
+	$qs->where('active',true);
+})->get();
+```
+- Models without related records using "deosntHave"
+```php
+$result=User::deosntHave('posts')->get();
+```
+- Models without specific relationship conditions using "whereDeosntHave"
+```php
+$result=User::whereDeosntHave('comments',function($qs){
+	$qs->where('active',false);
+})->get();
+```
+- Reletions sum "withSum"
+```php
+$result=User::withSum('comments','likes')->get();
+```
+- Check if related record exists using "withExists"
+```php
+$result=User::withExists('posts')->where('active',true)->get();
+```
+- Retrieve relationship count using  "withCounts"
+```php
+$result=User::withCounts('posts')->where('active',true)->get();
+```
