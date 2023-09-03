@@ -16,9 +16,9 @@ It’s very useful if you’re working with dates that depend on each other: <br
 
 `class ProductRequest extends FromRequest`<br>
 &nbsp;`{`<br>
-`public function rules():array`<br>
-`return [`<br>
-`'publishAt' =>[`<br>
+&ensp;`public function rules():array`<br>
+&ensp;&nbsp;`return [`<br>
+&emsp;&nbsp`'publishAt' =>[`<br>
 `'required',`<br>
 `'date',`<br>
 `'before:publishAt'`<br>
