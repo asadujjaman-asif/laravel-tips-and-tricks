@@ -37,20 +37,15 @@ It’s very useful if you’re working with dates that depend on each other: <br
 You can use the best option of if as your like. <br>
 <br>for example.
 
-`class ProductRequest extends FromRequest`<br>
-`{`<br>
-`public function rules():array`<br>
-`return [`<br>
-`'publishAt' =>[`<br>
-`'required',`<br>
-`'date',`<br>
-`'before:publishAt'`<br>
-`],`<br>
-`'archiveAt'=>[`<br>
-`'required',`<br>
-`'date',`<br>
-`'after:publishAt'`<br>
-`]`<br>
-`];`<br>
+`public function hasLimited(Account $account):bool`<br>
+`if($account->has_access_to_paid_version_for_sale){`<br>
+&nbsp`return false`<br>
 `}`<br>
+`'if(! config('app.requires_subscription')){`<br>
+&nbsp`return false;`<br>
+`}`<br>
+`'if($account->isSubscribed()){`<br>
+&nbsp`return false;`<br>
+`}`<br>
+`return false;`<br>
 `}`<br>
