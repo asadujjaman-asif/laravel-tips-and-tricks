@@ -37,7 +37,7 @@ It’s very useful if you’re working with dates that depend on each other: <br
 You can use the best option of if as your like. <br>
 <br>for example.
 
-`public function hasLimited(Account $account):bool`<br>
+`public function hasLimitations(Account $account):bool`<br>
 &nbsp;`if($account->has_access_to_paid_version_for_sale){`<br>
 &ensp;`return false`<br>
 &nbsp;`}`<br>
@@ -47,5 +47,13 @@ You can use the best option of if as your like. <br>
 &nbsp;`'if($account->isSubscribed()){`<br>
 &ensp;`return false;`<br>
 &nbsp;`}`<br>
-&nbsp;`return false;`<br>
+&nbsp;`return true;`<br>
+`}`<br>
+<br>
+
+`public function hasLimitations(Account $account):bool`<br>
+&nbsp;`if($account->has_access_to_paid_version_for_sale){ || (! config('app.requires_subscription')) || ($account->isSubscribed()) {`<br>
+&ensp;`return false`<br>
+&nbsp;`}`<br>
+&nbsp;`return true;`<br>
 `}`<br>
