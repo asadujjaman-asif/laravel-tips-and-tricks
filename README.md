@@ -57,3 +57,8 @@ You can use the best option of if as your like. <br>
 &nbsp;`}`<br>
 &nbsp;`return true;`<br>
 `}`<br>
+
+<br>
+
+`public function hasLimitations(Account $account):bool`<br>
+&nbsp;`return (($account->has_access_to_paid_version_for_sale) && (! config('app.requires_subscription')) && ($account->isSubscribed())))`<br>
