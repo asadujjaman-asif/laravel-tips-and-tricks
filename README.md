@@ -10,7 +10,7 @@ dd($var);
 ```
 - From Laravel 10.11:<br>
 ```php
-	now()->addDays(7)->dd();
+now()->addDays(7)->dd();
 ```
 <br>
 
@@ -19,51 +19,51 @@ dd($var);
 You can use the before and after validation rules in Laravel. <br>
 It’s very useful if you’re working with dates that depend on each other: <br>for example.
 
-`class ProductRequest extends FromRequest`<br>
-&nbsp;`{`<br>
-&ensp;`public function rules():array`<br>
-&ensp;&nbsp;`return [`<br>
-&emsp;&nbsp;`'publishAt' =>[`<br>
-&emsp;&ensp;`'required',`<br>
-&emsp;&ensp;`'date',`<br>
-&emsp;&ensp;`'before:publishAt'`<br>
-&ensp;&nbsp;`],`<br>
-&emsp;&nbsp;`'archiveAt'=>[`<br>
-&emsp;&ensp;`'required',`<br>
-&emsp;&ensp;`'date',`<br>
-&emsp;&ensp;`'after:publishAt'`<br>
-&ensp;&nbsp;`]`<br>
-&ensp;`];`<br>
-&ensp;`}`<br>
-&nbsp;`}`<br>
-
+```php
+class ProductRequest extends FromRequest
+{
+	public function rules():array
+		return[
+			'publishAt' =>[
+				'required',
+				'date',
+				'before:publishAt'
+			],
+			'archiveAt'=>[
+				'required',
+				'date',
+				'after:publishAt'
+			]
+		]
+	}
+}
+```
 # Deferent option of if conditons.
 
 You can use the best option of if as your like. <br>
 <br>for example.
 
-`public function hasLimitations(Account $account):bool`<br>
-&nbsp;`if($account->has_access_to_paid_version_for_sale){`<br>
-&ensp;`return false`<br>
-&nbsp;`}`<br>
-&nbsp;`'if(! config('app.requires_subscription')){`<br>
-&ensp;`return false;`<br>
-&nbsp;`}`<br>
-&nbsp;`'if($account->isSubscribed()){`<br>
-&ensp;`return false;`<br>
-&nbsp;`}`<br>
-&nbsp;`return true;`<br>
-`}`<br>
-<br>
+```php
+public function hasLimitations(Account $account):bool
+	if($account->has_access_to_paid_version_for_sale){
+		return false;
+	}
+	if(! config('app.requires_subscription')){
+		return false;
+	}
+	if($account->isSubscribed()){
+		return false;
+	}
+	return true;
+}
 
-`public function hasLimitations(Account $account):bool`<br>
-&nbsp;`if($account->has_access_to_paid_version_for_sale){ || (! config('app.requires_subscription')) || ($account->isSubscribed()) {`<br>
-&ensp;`return false`<br>
-&nbsp;`}`<br>
-&nbsp;`return true;`<br>
-`}`<br>
+public function hasLimitations(Account $account):bool
+	if($account->has_access_to_paid_version_for_sale){ || (! config('app.requires_subscription')) || ($account->isSubscribed()) {
+		return false;
+	}
+	return true;
+}
 
-<br>
-
-`public function hasLimitations(Account $account):bool`<br>
-&nbsp;`return (($account->has_access_to_paid_version_for_sale) && (! config('app.requires_subscription')) && ($account->isSubscribed())))`<br>
+public function hasLimitations(Account $account):bool
+	return (($account->has_access_to_paid_version_for_sale) && (! config('app.requires_subscription')) && ($account->isSubscribed())));
+```
