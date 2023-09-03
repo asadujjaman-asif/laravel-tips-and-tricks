@@ -38,14 +38,14 @@ You can use the best option of if as your like. <br>
 <br>for example.
 
 `public function hasLimited(Account $account):bool`<br>
-`if($account->has_access_to_paid_version_for_sale){`<br>
-&nbsp`return false`<br>
-`}`<br>
-`'if(! config('app.requires_subscription')){`<br>
-&nbsp`return false;`<br>
-`}`<br>
-`'if($account->isSubscribed()){`<br>
-&nbsp`return false;`<br>
-`}`<br>
-`return false;`<br>
+&nbsp;`if($account->has_access_to_paid_version_for_sale){`<br>
+&ensp;`return false`<br>
+&nbsp;`}`<br>
+&nbsp;`'if(! config('app.requires_subscription')){`<br>
+&ensp;`return false;`<br>
+&nbsp;`}`<br>
+&nbsp;`'if($account->isSubscribed()){`<br>
+&ensp;`return false;`<br>
+&nbsp;`}`<br>
+&nbsp;`return false;`<br>
 `}`<br>
