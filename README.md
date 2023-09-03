@@ -7,4 +7,4 @@ You can now call dd() or dump() for Carbon objects, useful at the end of chainin
 $var= now()->addDays(7);<br>
 dd($var);<br>
 - From Laravel 10.11:<br>
-![#dddddd]now()->addDays(7)->dd();<br>`#dddddd`
+![#1589F0]now()->addDays(7)->dd();<br>`#1589F0`
