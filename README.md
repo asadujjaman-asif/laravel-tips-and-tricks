@@ -144,7 +144,7 @@ $result=User::whereDeosntHave('comments',function($qs){
 	$qs->where('active',false);
 })->get();
 ```
-- aravel request rule
+## Laravel request rule
 You can implement password validations in Laravel using the Password rule object. 
 Easily customize complexity requirements with methods like.
 - min()
