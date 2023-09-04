@@ -170,23 +170,3 @@ $validator = Validator::make($request->all(),[
 ]);
 $validator->fails()? 'Validation errors': 'validations passed';
 ```
-- Check if related record exists using "withExists"
-```php
-$result=User::withExists('posts')->where('active',true)->get();
-```
-- Retrieve relationship count using  "withCounts"
-```php
-$result=User::withCounts('posts')->where('active',true)->get();
-```
-- Reletions sum "withSum"
-```php
-$result=User::withSum('comments','likes')->get();
-```
-- Check if related record exists using "withExists"
-```php
-$result=User::withExists('posts')->where('active',true)->get();
-```
-- Retrieve relationship count using  "withCounts"
-```php
-$result=User::withCounts('posts')->where('active',true)->get();
-```
