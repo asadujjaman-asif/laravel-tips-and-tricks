@@ -144,6 +144,40 @@ $result=User::whereDeosntHave('comments',function($qs){
 	$qs->where('active',false);
 })->get();
 ```
+- aravel request rule
+You can implement password validations in Laravel using the Password rule object. 
+Easily customize complexity requirements with methods like.
+- min()
+- letters()
+- mixedCase()
+- numbers()
+- symbols()
+- uncompromised()
+```php
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validator\Rules\Password;
+//Create  a validator instance
+$validator = Validator::make($request->all(),[
+	'password'=>[
+		'required', //Password is required
+		'confirmed', // Password Must be confirmed
+		Password::min(8) //Password should be minimum 8 characters length
+		->letters() // Password should containt at least 1 latter
+		->mixedCase() //Password should containt at least 1 uppercase latter and 1 lowercase latter
+		->numbers() // Password should containt at least 1 number
+		->uncompromised(); /// Password should not be compromised in a data leak
+	],
+]);
+$validator->fails()? 'Validation errors': 'validations passed';
+```
+- Check if related record exists using "withExists"
+```php
+$result=User::withExists('posts')->where('active',true)->get();
+```
+- Retrieve relationship count using  "withCounts"
+```php
+$result=User::withCounts('posts')->where('active',true)->get();
+```
 - Reletions sum "withSum"
 ```php
 $result=User::withSum('comments','likes')->get();
