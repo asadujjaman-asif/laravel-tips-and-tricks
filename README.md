@@ -170,3 +170,64 @@ $validator = Validator::make($request->all(),[
 ]);
 $validator->fails()? 'Validation errors': 'validations passed';
 ```
+## Laravel relation
+Boost performance and efficiency with these 10 amazing tips using the 'with()' method. Level up your relationships game!
+- Load multiple relationships
+```php
+$user = User::with(['posts','comments'])->find();
+```
+- Load nested relationships
+```php
+$posts = Post::with('comments.user')->get();
+```
+- Load relationships with constraints
+```php
+$user = User::with(['posts',($qs)=>{
+	$qs->where('published',true);
+}])->find(1);
+```
+- Load relationships with custom select collumns
+```php
+$user = User::with(['posts',($qs)=>{
+	$qs->select('published','title');
+}])->get();
+```
+- Load relationships with pagination
+```php
+$user = User::with(['posts',($qs)=>{
+	$qs->select('created_at','asc')->paginate(20);
+}])->get();
+```
+- Load relationships with specific columns
+```php
+$user = User::with('post:title,description')->find(1);
+```
+- Load relationships with random related models
+```php
+$user = User::with(['posts',($qs)=>{
+	$qs->inRandomOrder()->limit(20);
+}])->get();
+```
+- Load relationships with custom aliases
+```php
+$user = User::with(['latesDate as currentDate',($qs)=>{
+	$qs->latest()->limit(20);
+}])->get();
+```
+- Load relationships with custom aliases
+```php
+$user = User::with(['latesDate as currentDate',($qs)=>{
+	$qs->latest()->limit(20);
+}])->get();
+```
+- Load relationships conditionally
+```php
+$user = User::with(['latesDate as currentDate',($qs)=>{
+	$qs->with('secretId')->limit(20);
+}])->get();
+```
+- Load relationships based on a methods return value
+```php
+$user = User::with(User::resolvRelationships())->get();
+```
+
