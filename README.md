@@ -230,4 +230,81 @@ $user = User::with(['latesDate as currentDate',($qs)=>{
 ```php
 $user = User::with(User::resolvRelationships())->get();
 ```
-
+## Laravel dump() & dd()
+Laravel request class has been added dd & dump.
+- dump & die all request datas
+```php
+$request->dd();
+```
+- dump and die specific keys
+```php
+$request->dd('name');
+$request->dd(['name','address']);
+```
+- dump all request datas
+```php
+$request->dump();
+```
+- dump specific keys
+```php
+$request->dump('name');
+$request->dump(['name','address']);
+```
+- You can use also request helper
+```php
+$request()-?dd();
+$request()-?dump();
+```
+## toArray & attributesToArray 
+Developers! Use toArray & attributesToArray for streamlined data handling.
+- dump & die all request datas
+```php
+$user=User::with('posts')->find(1);
+```
+- Use toArray method and get result of their post.
+```php
+$result = $user->toArray();
+```
+- Oupput of the users
+```php
+[
+	'name'=>'Jhon'
+	'age'=>65,
+	'created_at'=>'2023-07-28:12-55-36',
+	'updated_at'=>'2023-07-28:12-55-36',
+	'post'=>[
+		//this is post list
+	]
+]
+```
+- Use toArray method and get result of their post.
+```php
+$result = $user->attributesToArray();
+```
+- Oupput of the user
+```php
+[
+	'name'=>'Jhon'
+	'age'=>65,
+	'created_at'=>'2023-07-28:12-55-36',
+	'updated_at'=>'2023-07-28:12-55-36'
+]
+```
+## Laravel latest() & oldest() 
+ If you need to order a query, you can use the latest() and oldest() methods, making everything a bit nicer within your codebase.
+- Traditional way of ordering 'latest' data
+```php
+$user=User::orderBy('id','desc')->get();
+```
+- Smart Way.
+```php
+$user=User::latest()->get();
+```
+- Traditionals way of ordering 'oldest' data
+```php
+	$user=User::orderBy('id','asc')->get();
+```
+- Smart way.
+```php
+$user=User::oldest(')->get();
+```
