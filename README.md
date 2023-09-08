@@ -277,7 +277,7 @@ $result = $user->toArray();
 	]
 ]
 ```
-- Use toArray method and get result of their post.
+- Use attributesToArray method and get result of their post.
 ```php
 $result = $user->attributesToArray();
 ```
@@ -308,3 +308,53 @@ $user=User::latest()->get();
 ```php
 $user=User::oldest(')->get();
 ```
+## isset vs data_get() in php
+  data_get() is really useful when it comes to dealing with arrays and accessing keys. Which do you prefer? 
+```php
+$data=[
+    'products'=>[
+        'item'=>[
+            'name'=>'HP Laptop',
+            'price'=>70000
+        ]
+    ]
+];
+```
+- Get ammount.
+```php
+$price=isset($data['products']['item']['price'])?isset($data['products']['item']['price']):0;
+echo $price;
+$priceTow=isset($data['products']['item']['price'])??0;
+echo $priceTow;
+```
+- Using data_get()
+```php
+	$amount=data_get($data,'products.item.price');
+    echo $amount;
+```
+- Setting a default value when key doesn't exists.
+```php
+$amount=data_get($data,'products.item.price',0);
+echo $amount;
+```
+## Laravel count/withcount
+Don't forget eager loading isn't just for grabbing relational models. You can also
+use it for fetching relational data such as counts.
+<br>
+This stops you from having N+1 issues within your applications when you want to display small bits of info.
+
+- This code will load to N+1 issues whith your app.
+```php
+$posts=Post::with('comments')->get();
+foreach ($posts as $post) {
+	$countComment = $post->comments->count();
+}
+```
+- Allways Eager load where possible,including counting relationships with models with the flowing.
+```php
+$posts=Post::withCount('comments')->get();
+foreach ($posts as $post) {
+	$countComment = $post->comments_count;
+}
+```
+
