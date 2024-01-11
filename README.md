@@ -357,4 +357,16 @@ foreach ($posts as $post) {
 	$countComment = $post->comments_count;
 }
 ```
+- Laravel remove specific character from a strings.
+```php
+
+$string="Football";
+//Ftball
+Str::remove('o',$string);
+Str::of($string)->remove("o");
+
+//Ftba
+Str::remove(['o','l'],$string);
+Str::of($string)->remove(['o','l']);
+
 
